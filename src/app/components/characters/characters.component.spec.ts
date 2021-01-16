@@ -3,8 +3,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CharactersComponent } from './characters.component';
 import { CharacterApiService } from '../../shared/services/character-api.service';
-import { of } from 'rxjs';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { Character } from 'src/app/shared/models/character';
+import { of } from 'rxjs';
+import { MockCharacterApiService } from '../../shared/mocks/characterApiServiceMock';
 
 describe('CharactersComponent', () => {
   let component: CharactersComponent;
@@ -14,11 +19,14 @@ describe('CharactersComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [CharactersComponent],
+      imports: [HttpClientTestingModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         {
           provide: CharacterApiService,
+          useClass: MockCharacterApiService,
         },
+        HttpTestingController,
       ],
     }).compileComponents();
   }));

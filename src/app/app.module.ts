@@ -14,6 +14,8 @@ import { MatListModule } from '@angular/material/list';
 import { CharactersComponent } from './components/characters/characters.component';
 import { CharacterComponent } from './components/characters/character/character.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatIconModule,
     MatListModule,
     FlexLayoutModule,
+    HttpClientModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
