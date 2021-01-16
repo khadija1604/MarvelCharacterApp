@@ -24,9 +24,6 @@ describe('CharacterApiService', () => {
     service = TestBed.inject(CharacterApiService);
     httpCleintMock = TestBed.inject(HttpTestingController);
   });
-  afterEach(() => {
-    httpCleintMock.verify();
-  });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
@@ -41,5 +38,9 @@ describe('CharacterApiService', () => {
       expect(req.request.method).toBe('GET');
       req.flush(dummyCharacter);
     });
+  });
+
+  afterEach(() => {
+    httpCleintMock.verify();
   });
 });

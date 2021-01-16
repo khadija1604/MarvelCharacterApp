@@ -1,6 +1,6 @@
-<div fxFlex fxLayout="column">
+<div fxFlex fxLayout="column" class="flexLayout">
     <div fxLayout="row wrap">
-        <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column" *ngFor="let character of characters" >
+        <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column" *ngFor="let character of characters"  class="flexElement">
             <app-character [character]="character"></app-character>
         </div>
     </div>
