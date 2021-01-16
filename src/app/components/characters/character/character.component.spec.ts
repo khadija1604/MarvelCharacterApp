@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Character } from 'src/app/shared/models/character';
 
 import { CharacterComponent } from './character.component';
 
@@ -8,9 +9,8 @@ describe('CharacterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CharacterComponent ]
-    })
-    .compileComponents();
+      declarations: [CharacterComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +21,12 @@ describe('CharacterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should have a field of type character', () => {
+    component.character = new Character('', {
+      thumbnailPath: '',
+      thumbnailExtention: '',
+    });
+    expect(component.character).toBeInstanceOf(Character);
   });
 });
