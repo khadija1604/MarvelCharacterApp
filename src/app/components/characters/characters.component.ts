@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Character } from '../../shared/models/character';
+import { CharacterApiService } from '../../shared/services/character-api.service';
 
 @Component({
   selector: 'app-characters',
@@ -9,30 +10,23 @@ import { Character } from '../../shared/models/character';
 export class CharactersComponent implements OnInit {
   characters: Character[];
 
-  constructor() {}
+  constructor(private characterApiService: CharacterApiService) {}
 
   ngOnInit(): void {
     this.getCharacters();
   }
 
   getCharacters(): void {
-    this.characters = [
-      new Character('Shiba Inu', {
-        thumbnailPath: 'https://material.angular.io/assets/img/examples/shiba2',
-        thumbnailExtention: 'jpg',
-      }),
-      new Character('Shiba Inu', {
-        thumbnailPath: 'https://material.angular.io/assets/img/examples/shiba2',
-        thumbnailExtention: 'jpg',
-      }),
-      new Character('Shiba Inu', {
-        thumbnailPath: 'https://material.angular.io/assets/img/examples/shiba2',
-        thumbnailExtention: 'jpg',
-      }),
-      new Character('Shiba Inu', {
-        thumbnailPath: 'https://material.angular.io/assets/img/examples/shiba2',
-        thumbnailExtention: 'jpg',
-      }),
-    ];
+    this.characterApiService.getAllCharacters().subscribe(
+      (characters) => {
+        this.characters = characters;
+      },
+      (error) => {
+        throw new Error('Something went wrong');
+      },
+      () => {
+        console.log('completed');
+      }
+    );
   }
 }
