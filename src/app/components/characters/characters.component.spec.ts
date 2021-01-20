@@ -50,10 +50,9 @@ describe('CharactersComponent', () => {
         'getAllCharacters'
       ).and.returnValue(
         of([
-          new Character('Shiba Inu', {
-            thumbnailPath:
-              'https://material.angular.io/assets/img/examples/shiba2',
-            thumbnailExtention: 'jpg',
+          new Character('Fake Name', {
+            thumbnailPath: 'FakePath',
+            thumbnailExtention: 'FakeExtention',
           }),
         ])
       );
@@ -63,6 +62,20 @@ describe('CharactersComponent', () => {
       expect(component.characters).toBeDefined();
       expect(component.characters.length).toBe(1);
       done();
+    });
+  });
+
+  describe('#paginate', () => {
+    const dummyData = [
+      new Character('Fake Name', {
+        thumbnailPath: 'FakePath',
+        thumbnailExtention: 'FakeExtention',
+      }),
+    ];
+    it('Should fill paginatedCharacters array by data to diplay in the current page ', () => {
+      component.paginate(dummyData);
+      expect(component.paginatedCharacters.length).toEqual(1);
+      expect(component.paginatedCharacters).toEqual(dummyData);
     });
   });
 });

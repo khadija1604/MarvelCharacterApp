@@ -16,13 +16,15 @@ import { CharacterComponent } from './components/characters/character/character.
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
-
+import { PaginationComponent } from './shared/pagination/pagination.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     CharactersComponent,
     CharacterComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { MatCardModule } from '@angular/material/card';
     FlexLayoutModule,
     HttpClientModule,
     MatCardModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

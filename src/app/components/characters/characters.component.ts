@@ -9,6 +9,9 @@ import { CharacterApiService } from '../../shared/services/character-api.service
 })
 export class CharactersComponent implements OnInit {
   characters: Character[];
+  paginatedCharacters: Character[];
+  pageSize: number = 8;
+  pageSizeOptions: number[] = [8, 12];
 
   constructor(private characterApiService: CharacterApiService) {}
 
@@ -20,6 +23,7 @@ export class CharactersComponent implements OnInit {
     this.characterApiService.getAllCharacters().subscribe(
       (characters) => {
         this.characters = characters;
+        this.paginatedCharacters = this.characters.slice(0, this.pageSize);
       },
       (error) => {
         throw new Error('Something went wrong');
@@ -28,5 +32,9 @@ export class CharactersComponent implements OnInit {
         console.log('completed');
       }
     );
+  }
+
+  paginate(event): void {
+    this.paginatedCharacters = event;
   }
 }

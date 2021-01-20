@@ -16,7 +16,7 @@ export class CharacterApiService {
   getAllCharacters(): Observable<Character[]> {
     return this.httpClient.get<Character[]>(this.API_URL).pipe(
       map((response) =>
-        response['data']['results'].map((character) => {
+        response['data']?.results?.map((character) => {
           return new Character(character['name'], {
             thumbnailPath: character['thumbnail'].path,
             thumbnailExtention: character['thumbnail'].extension,
